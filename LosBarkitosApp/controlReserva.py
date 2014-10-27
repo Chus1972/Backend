@@ -7,7 +7,7 @@ from django.http import HttpResponse
 def reserva(request, tipo, PV): # tipo Rio|Electrica|Whaly|Gold segun el tipo de barc
 	#	RECOGE EL TIPO DE BARCA Y ACTUALIZA LA BDD CON LA SALIDA DE ESA BARCA
 	# Busca las primeras barcas libres para escoger la que nos pide
-	url = "http://127.0.0.1:8000/primera_libre"
+	url = "http://127.0.0.1:8000/primera_libre/"
 	respuesta = urllib.urlopen(url)
 	# Contiene un JSON con las primeras barcas que llegan segun el tipo
 	# [0] - rio
@@ -28,6 +28,13 @@ def reserva(request, tipo, PV): # tipo Rio|Electrica|Whaly|Gold segun el tipo de
 
 	barca = Barca.objects.get(nombre = json_data[tipo_barca - 1 ]['nombre'])
 	print '-------barca------'; print barca; print '-----------'
+
+	try:
+		h_prevista = barca.libre.isoformat()
+	except Exception, e:
+		h_prevista = barca.libre
+		raise e
+
 	h_prevista = barca.libre.isoformat()
 	print '-------h_prevista------'; print h_prevista; print '-----------'
 

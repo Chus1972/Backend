@@ -50,6 +50,7 @@ def primeraLibre(request):
 	primera_rio = Barca.objects.filter(tipo_barca = 1).order_by('control', 'libre', 'codigo')[0]
 	primera_electrica = Barca.objects.filter(tipo_barca = 2).order_by('control', 'libre', 'codigo')[0]
 	primera_whaly = Barca.objects.filter(tipo_barca = 3).order_by('control', 'libre', 'codigo')[0]
+	print '----primera_whaly-------'; print primera_whaly;print '------------'
 	primera_gold = Barca.objects.filter(tipo_barca = 4).order_by('control', 'libre')[0]
 
 	try:
@@ -62,13 +63,15 @@ def primeraLibre(request):
 	except TypeError:
 		electrica = {'nombre' : primera_electrica.nombre, 'libre' : 'libre'}
 
+	#try:
+	print '----pasa por aqui TRY-------'; print datetime.time(primera_whaly.libre).isoformat(); print '------------'
+	whaly = {'nombre' : primera_whaly.nombre, 'libre' : datetime.time(primera_whaly.libre).isoformat()}
+	#except TypeError:
+	#	print '----pasa por aqui EXCEPT-------';print '------------'
+	#	whaly = {'nombre' : primera_whaly.nombre, 'libre' : 'libre'}
+	print '----PETA AQUI-------'; print '------------'
 	try:
-		whaly = {'nombre' : primera_whaly.nombre, 'libre' : datetime.time(primera_whaly.libre).isoformat()}
-	except TypeError:
-		whaly = {'nombre' : primera_whaly.nombre, 'libre' : 'libre'}
-
-	try:
-		gold = {'nombre' : primera_gold.nombre, 'libre' : datetime.time(primera_gold.libre).isoformat()}	
+		gold = {'nombre' : primera_gold.nombre, 'libre' : datetime.time(primera_gold.libre).isoformat()}
 	except TypeError:
 		gold = {'nombre' : primera_gold.nombre, 'libre' : 'libre'}
 
