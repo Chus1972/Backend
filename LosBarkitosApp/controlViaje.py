@@ -41,6 +41,24 @@ def registroBarca(request, tipo, precio, pv, vend):
 		data = {'error' : 1, 'tipo error' : 'Error en la grabacion del Control de datos'}
 		return HttpResponse(json.dumps(data), 'application/json')
 
-	data = {'error' : 0 'Numero': n, 'Precio': precio, 'Tipo Barca': regBarca.tipo}
+	data = {'error' : 0 ,'Numero': n, 'Precio': precio, 'Tipo Barca': regBarca.tipo}
 
 	return HttpResponse(json.dumps(data), 'application/json')
+
+# Devuelve un listado de los viajes segun el tipo de barca (todos para todos), punto de venta, o vendedor
+def listadoViajes(request, tipo, pv, vend):
+	if tipo == 'todos':
+		filtro_tipo = ''
+	else: # 1, 2 ,3 o 4 segun sea Rio, electrica, whaly o gold
+		tipo_barca = TipoBarca.objects.get(codigo = tipo)
+		filtro_tipo = 'barca = %o' % tipo_barca
+
+	punto_venta = PuntoVenta.objects.get(codigo = pv)
+	filtro_pv = 'punto_venta = %o' % punto_venta
+	vendedor = Vendedor.objects.get(codigo = vend)
+	filtro_vendedor = 'vendedor = %o' % vendedor
+
+	viajes = Viaje.objects.filter(barca = filtro_tipo, punto_venta = filtro_pv, vendedor = filtro_vendedor)
+
+	return HttpResponse(json.dumps(viajes), 'application/json')
+
