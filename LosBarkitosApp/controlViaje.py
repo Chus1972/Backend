@@ -26,13 +26,21 @@ def registroBarca(request, tipo, precio, pv, vend):
 				punto_venta = regPV,
 				barca 		= regBarca,
 				vendedor 	= regVendedor)
-	reg.save()
+	try:
+		reg.save()
+	except:
+		data = {'error' : 1, 'tipo error' : 'Error en la grabacion del viaje'}
+		return HttpResponse(json.dumps(data), 'application/json')
 
 	# Aumento el numero de ticket y lo grabo en la bdd
 	n = n + 1
 	datosControl.num_viaje = n
-	datosControl.save()
+	try:
+		datosControl.save()
+	except:
+		data = {'error' : 1, 'tipo error' : 'Error en la grabacion del Control de datos'}
+		return HttpResponse(json.dumps(data), 'application/json')
 
-	data = {'Numero': n, 'Precio': precio, 'Tipo Barca': regBarca.tipo}
+	data = {'error' : 0 'Numero': n, 'Precio': precio, 'Tipo Barca': regBarca.tipo}
 
 	return HttpResponse(json.dumps(data), 'application/json')
