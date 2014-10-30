@@ -7,6 +7,7 @@ from .models import Vendedor
 from .models import Control
 import datetime
 import json
+from django.core.serializers.json import DjangoJSONEncoder
 
 # Se tiene que insertar un registro en la base de datos Viaje.
 # Hay que tener en cuenta que el numero sale de Control y se 
@@ -45,20 +46,39 @@ def registroBarca(request, tipo, precio, pv, vend):
 
 	return HttpResponse(json.dumps(data), 'application/json')
 
-# Devuelve un listado de los viajes segun el tipo de barca (todos para todos), punto de venta, o vendedor
+# Devuelve un listado de los viajes segun el tipo de barca (0 para todos), punto de venta, o vendedor
+
 def listadoViajes(request, tipo, pv, vend):
-	if tipo == 'todos':
-		filtro_tipo = ''
-	else: # 1, 2 ,3 o 4 segun sea Rio, electrica, whaly o gold
-		tipo_barca = TipoBarca.objects.get(codigo = tipo)
-		filtro_tipo = 'barca = %o' % tipo_barca
+	if tipo != '0':
+		filtro_tipo = TipoBarca.objects.get(codigo = tipo)
 
-	punto_venta = PuntoVenta.objects.get(codigo = pv)
-	filtro_pv = 'punto_venta = %o' % punto_venta
-	vendedor = Vendedor.objects.get(codigo = vend)
-	filtro_vendedor = 'vendedor = %o' % vendedor
+	if pv != '0':
+		filtro_pv = PuntoVenta.objects.get(codigo = pv)
 
-	viajes = Viaje.objects.filter(barca = filtro_tipo, punto_venta = filtro_pv, vendedor = filtro_vendedor)
+	if vend != '0':
+		filtro_vend = Vendedor.objects.get(codigo = vend)
 
-	return HttpResponse(json.dumps(viajes), 'application/json')
+	if   tipo != '0' and pv != '0' and vend != '0':
+		viajes = Viaje.objects.filter(barca = filtro_tipo, punto_venta = filtro_pv, vendedor = filtro_vend)
+	elif tipo != '0' and pv != '0' and vend == '0':
+		viajes = Viaje.objects.filter(barca = filtro_tipo, punto_venta = filtro_pv)
+	elif tipo != '0' and pv == '0' and vend != '0':
+		viajes = Viaje.objects.filter(barca = filtro_tipo, vendedor = filtro_vend)
+	elif tipo != '0' and pv == '0' and vend == '0':
+		viajes = Viaje.objects.filter(barca = filtro_tipo)
+	elif tipo == '0' and pv != '0' and vend != '0':
+		viajes = Viaje.objects.filter(punto_venta = filtro_pv, vendedor = filtro_vend)
+	elif tipo == '0' and pv != '0' and vend == '0':
+		viajes = Viaje.objects.filter(punto_venta = filtro_pv)
+	elif tipo == '0' and pv == '0' and vend != '0':
+		viajes = Viaje.objects.filter(vendedor = filtro_vend)
+	elif tipo == '0' and pv == '0' and vend == '0':
+		viajes = Viaje.objects.all()
+
+	dict_viaje = []
+	for viaje in viajes:
+		data = {'Numero' : viaje.numero, 'Fecha' : viaje.fecha.isoformat(), 'Barca' : viaje.barca.tipo, 'Punto Venta' : viaje.punto_venta.nombre, 'Vendedor' : viaje.vendedor.nombre, 'Precio' : viaje.precio}
+		dict_viaje.append(data)
+
+	return HttpResponse(json.dumps(dict_viaje), 'application/json')
 

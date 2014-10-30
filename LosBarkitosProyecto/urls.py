@@ -38,6 +38,6 @@ urlpatterns = patterns('',
     url(r'^resetear_barcas/$', resetear),
     url(r'^reserva/(Rio|Electrica|Whaly|Gold)/([123])$', reserva),
     url(r'^reserva_fuera/([0-9]+)/$', reserva_fuera),
-    url(r'^listado_barcas/([1234]{0,1})/([123]{0,1})/([1234]{0,1})/$', listadoViajes),
+    url(r'^listado_viaje/(?P<tipo>[01234])/(?P<pv>[0123])/(?P<vend>[01234])/$', listadoViajes),
 
 )

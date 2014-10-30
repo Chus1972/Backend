@@ -39,8 +39,7 @@ INSTALLED_APPS = (
     #'south',
     'LosBarkitosApp',
     'rest_framework',
-    'mockups',
-)
+    'mockups',)
 
 
 REST_FRAMEWORK = {
@@ -96,3 +95,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
