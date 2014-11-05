@@ -1,4 +1,9 @@
 # Ignones
 venv
 *.pyc
+*.pyo
+/bin
+/include
+/lib
+/share
 
