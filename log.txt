@@ -1,0 +1,103 @@
+2014-11-12T11:02:03.291230+00:00 app[web.1]: [12/Nov/2014 11:02:03] "GET / HTTP/1.1" 400 26
+2014-11-12T11:02:03.289435+00:00 heroku[router]: at=info method=GET path="/" host=losbarkitos.herokuapp.com request_id=dbe68ca7-2682-442b-99b2-4d8055919365 fwd="95.121.147.127" dyno=web.1 connect=0ms service=6ms status=400 bytes=182
+2014-11-12T11:02:04.524843+00:00 app[web.1]: [12/Nov/2014 11:02:04] "GET /favicon.ico HTTP/1.1" 400 26
+2014-11-12T11:02:04.522709+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=losbarkitos.herokuapp.com request_id=5d560ebe-31d1-4bb4-943a-0839c22299a0 fwd="95.121.147.127" dyno=web.1 connect=0ms service=6ms status=400 bytes=182
+2014-11-12T11:02:41.420198+00:00 heroku[router]: at=info method=GET path="/" host=losbarkitos.herokuapp.com request_id=8740c2f2-eb51-4ebd-bfbd-f32f982e2649 fwd="95.121.147.127" dyno=web.1 connect=1ms service=7ms status=400 bytes=182
+2014-11-12T11:02:41.423775+00:00 app[web.1]: [12/Nov/2014 11:02:41] "GET / HTTP/1.1" 400 26
+2014-11-12T11:02:42.345598+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=losbarkitos.herokuapp.com request_id=b0db015c-3367-48ef-8e69-dc8ae7f06e6e fwd="95.121.147.127" dyno=web.1 connect=1ms service=8ms status=400 bytes=182
+2014-11-12T11:02:42.354058+00:00 app[web.1]: [12/Nov/2014 11:02:42] "GET /favicon.ico HTTP/1.1" 400 26
+2014-11-12T11:08:44.691037+00:00 heroku[router]: at=info method=GET path="/" host=losbarkitos.herokuapp.com request_id=2324cf2d-6150-4135-9884-08a71cc8dfe0 fwd="95.121.147.127" dyno=web.1 connect=1ms service=7ms status=400 bytes=182
+2014-11-12T11:08:44.694978+00:00 app[web.1]: [12/Nov/2014 11:08:44] "GET / HTTP/1.1" 400 26
+2014-11-12T11:08:46.838585+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=losbarkitos
+.herokuapp.com request_id=9cd5676a-a0b1-49da-a6fd-077718953290 fwd="95.121.147.127" dyno=web.1 connect=1ms service=7ms status=400 bytes=182
+2014-11-12T11:08:46.839717+00:00 app[web.1]: [12/Nov/2014 11:08:46] "GET /favicon.ico HTTP/1.1" 400 26
+2014-11-12T11:08:50.179422+00:00 heroku[router]: at=info method=GET path="/" host=losbarkitos.herokuapp.com request_id=556743a5-a508-4bd1-a624-c08c476f303b fwd="95.121.147.127" dyno=web.1 connect=1ms service=7ms status=400 bytes=182
+2014-11-12T11:08:50.188358+00:00 app[web.1]: [12/Nov/2014 11:08:50] "GET / HTTP/1.1" 400 26
+2014-11-12T11:08:56.144808+00:00 heroku[router]: at=info method=GET path="/fuera" host=losbarkitos.herokuapp.com request_id=a217c51c-943f-4883-a4b5-f5c7d4221738 fwd="95.121.147.127" dyno=web.1 connect=1ms service=7ms status=400 bytes=182
+2014-11-12T11:08:56.149149+00:00 app[web.1]: [12/Nov/2014 11:08:56] "GET /fuera HTTP/1.1" 400 26
+2014-11-12T11:10:18.436162+00:00 heroku[router]: at=info method=GET path="/fuera/" host=losbarkitos.herokuapp.com request_id=c95d3ce7-da16-42d9-b84b-1aa84886b03a fwd="95.121.147.127" dyno=web.1 connect=0ms service=8ms status=400 bytes=182
+2014-11-12T11:10:18.438764+00:00 app[web.1]: [12/Nov/2014 11:10:18] "GET /fuera/ HTTP/1.1" 400 26
+2014-11-12T11:16:44+00:00 heroku[slug-compiler]: Slug compilation started
+2014-11-12T11:17:25+00:00 heroku[slug-compiler]: Slug compilation finished
+2014-11-12T11:17:25.066034+00:00 heroku[api]: Release v12 created by chus@chusito.es
+2014-11-12T11:17:25.066006+00:00 heroku[api]: Deploy 1017145 by chus@chusito.es
+2014-11-12T11:17:25.741866+00:00 heroku[web.1]: State changed from up to starting
+2014-11-12T11:17:28.334101+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2014-11-12T11:17:29.681267+00:00 heroku[web.1]: Process exited with status 143
+2014-11-12T11:17:39.673020+00:00 app[web.1]: November 12, 2014 - 11:17:39
+2014-11-12T11:17:39.673023+00:00 app[web.1]: Django version 1.7, using settings 'LosBarkitosProyecto.settings'
+2014-11-12T11:17:39.673025+00:00 app[web.1]: Starting development server at http://0.0.0.0:48814/
+2014-11-12T11:17:39.655551+00:00 app[web.1]: Performing system checks...
+2014-11-12T11:17:39.673026+00:00 app[web.1]: Quit the server with CONTROL-C.
+2014-11-12T11:17:39.655569+00:00 app[web.1]: 
+2014-11-12T11:17:39.666688+00:00 app[web.1]: System check identified no issues (0 silenced).
+2014-11-12T11:17:40.258380+00:00 heroku[web.1]: State changed from starting to up
+2014-11-12T11:17:38.366663+00:00 heroku[web.1]: Starting process with command `python manage.py runserver 0.0.0.0:48814 --noreload`
+2014-11-12T11:17:41.844139+00:00 heroku[router]: at=info method=GET path="/" host=losbarkitos.herokuapp.com request_id=c7f177ba-fc65-4a48-9d2e-101e32c1b9ed fwd="54.90.223.146" dyno=web.1 connect=0ms service=61ms status=400 bytes=182
+2014-11-12T11:17:41.842236+00:00 app[web.1]: [12/Nov/2014 11:17:41] "GET / HTTP/1.1" 400 26
+2014-11-12T11:21:18.958189+00:00 heroku[router]: at=info method=GET path="/" host=losbarkitos.herokuapp.com request_id=9614f629-12d1-44af-ac26-7c6f2903fbf0 fwd="95.121.147.127" dyno=web.1 connect=0ms service=8ms status=400 bytes=182
+2014-11-12T11:21:18.960173+00:00 app[web.1]: [12/Nov/2014 11:21:18] "GET / HTTP/1.1" 400 26
+2014-11-12T11:21:19.766044+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=losbarkitos.herokuapp.com request_id=1ea10499-4976-4461-b737-e53fd7eff98c fwd="95.121.147.127" dyno=web.1 connect=0ms service=6ms status=400 bytes=182
+2014-11-12T11:21:19.765441+00:00 app[web.1]: [12/Nov/2014 11:21:19] "GET /favicon.ico HTTP/1.1" 400 26
+2014-11-12T11:21:22.583808+00:00 heroku[router]: at=info method=GET path="/fuera" host=losbarkitos.herokuapp.com request_id=5ef402f0-5560-406b-b3ce-9903233ebb86 fwd="95.121.147.127" dyno=web.1 connect=0ms service=10ms status=400 bytes=182
+2014-11-12T11:21:22.582845+00:00 app[web.1]: [12/Nov/2014 11:21:22] "GET /fuera HTTP/1.1" 400 26
+2014-11-12T11:21:23.952850+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=losbarkitos.herokuapp.com request_id=ba25c83b-84b7-4090-9d3e-03380a262e29 fwd="95.121.147.127" dyno=web.1 connect=0ms service=8ms status=400 bytes=182
+2014-11-12T11:21:23.949298+00:00 app[web.1]: [12/Nov/2014 11:21:23] "GET /favicon.ico HTTP/1.1" 400 26
+2014-11-12T11:37:51.539682+00:00 heroku[router]: at=info method=GET path="/" host=losbarkitos.herokuapp.com request_id=aa143c05-f1d3-46c8-8401-f4c23ea2192d fwd="95.121.147.127" dyno=web.1 connect=1ms service=7ms status=400 bytes=182
+2014-11-12T11:37:51.539656+00:00 app[web.1]: [12/Nov/2014 11:37:51] "GET / HTTP/1.1" 400 26
+2014-11-12T11:37:54.206793+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=losbarkitos.herokuapp.com request_id=1b0584ca-749a-41af-8169-86147a9eab4d fwd="95.121.147.127" dyno=web.1 connect=1ms service=7ms status=400 bytes=182
+2014-11-12T11:37:54.210455+00:00 app[web.1]: [12/Nov/2014 11:37:54] "GET /favicon.ico HTTP/1.1" 400 26
+2014-11-12T11:43:28.628139+00:00 heroku[router]: at=info method=GET path="/fuera" host=losbarkitos.herokuapp.com request_id=1346a4d0-cb23-42bd-9d23-cc714e92a547 fwd="95.121.147.127" dyno=web.1 connect=0ms service=6ms status=400 bytes=182
+2014-11-12T11:43:28.635813+00:00 app[web.1]: [12/Nov/2014 11:43:28] "GET /fuera HTTP/1.1" 400 26
+2014-11-12T11:43:30.676661+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=losbarkitos.herokuapp.com request_id=257300fc-1695-4058-9922-8e68c9c31fdc fwd="95.121.147.127" dyno=web.1 connect=1ms service=6ms status=400 bytes=182
+2014-11-12T11:43:30.675857+00:00 app[web.1]: [12/Nov/2014 11:43:30] "GET /favicon.ico HTTP/1.1" 400 26
+2014-11-12T11:43:33.528664+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=losbarkitos.herokuapp.com request_id=c4864c86-0183-42ce-8940-b26c74378713 fwd="95.121.147.127" dyno=web.1 connect=0ms service=11ms status=400 bytes=182
+2014-11-12T11:43:33.526630+00:00 app[web.1]: [12/Nov/2014 11:43:33] "GET /favicon.
+ico HTTP/1.1" 400 26
+2014-11-12T11:43:33.989638+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=losbarkitos.herokuapp.com request_id=2c5a2366-dce5-4f5d-b302-bb4bd5d997ce fwd="95.121.147.127" dyno=web.1 connect=0ms service=10ms status=400 bytes=182
+2014-11-12T11:43:33.988369+00:00 app[web.1]: [12/Nov/2014 11:43:33] "GET /favicon.ico HTTP/1.1" 400 26
+2014-11-12T11:51:47+00:00 heroku[slug-compiler]: Slug compilation started
+2014-11-12T11:52:15+00:00 heroku[slug-compiler]: Slug compilation finished
+2014-11-12T11:52:15.796013+00:00 heroku[api]: Deploy 6657699 by chus@chusito.es
+2014-11-12T11:52:15.796043+00:00 heroku[api]: Release v13 created by chus@chusito.es
+2014-11-12T11:52:16.296962+00:00 heroku[web.1]: State changed from up to starting
+2014-11-12T11:52:20.556300+00:00 heroku[web.1]: Process exited with status 143
+2014-11-12T11:52:19.234151+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2014-11-12T11:52:26.948557+00:00 app[web.1]: 
+2014-11-12T11:52:26.961035+00:00 app[web.1]: System check identified no issues (0 silenced).
+2014-11-12T11:52:26.948537+00:00 app[web.1]: Performing system checks...
+2014-11-12T11:52:26.968103+00:00 app[web.1]: November 12, 2014 - 11:52:26
+2014-11-12T11:52:26.968109+00:00 app[web.1]: Starting development server at http://0.0.0.0:32087/
+2014-11-12T11:52:26.968110+00:00 app[web.1]: Quit the server with CONTROL-C.
+2014-11-12T11:52:26.968107+00:00 app[web.1]: Django version 1.7, using settings 'LosBarkitosProyecto.settings'
+2014-11-12T11:52:27.369865+00:00 heroku[web.1]: State changed from starting to up
+2014-11-12T11:52:28.031715+00:00 heroku[router]: at=info method=GET path="/" host=losbarkitos.herokuapp.com request_id=bf1f5749-7ccb-4a00-8f7b-ed6886f92617 fwd="54.90.223.146" dyno=web.1 connect=1ms service=46ms status=404 bytes=242
+2014-11-12T11:52:28.032801+00:00 app[web.1]: [12/Nov/2014 11:52:28] "GET / HTTP/1.1" 404 74
+2014-11-12T11:52:25.436721+00:00 heroku[web.1]: Starting process with command `python manage.py runserver 0.0.0.0:32087 --noreload`
+2014-11-12T11:53:02.565039+00:00 heroku[router]: at=info method=GET path="/fuera/" host=losbarkitos.herokuapp.com request_id=cf56da8b-6162-4815-9046-c2c5ce05dbe6 fwd="95.121.147.127" dyno=web.1 connect=1ms service=68ms status=500 bytes=207
+2014-11-12T11:53:02.564153+00:00 app[web.1]: [12/Nov/2014 11:53:02] "GET /fuera/ HTTP/1.1" 500 27
+2014-11-12T11:53:05.925431+00:00 app[web.1]: [12/Nov/2014 11:53:05] "GET /favicon.ico HTTP/1.1" 404 85
+2014-11-12T11:53:05.923760+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=losbarkitos.herokuapp.com request_id=4a4ad3a7-722b-4332-a7fb-20512ea2d603 fwd="95.121.147.127" dyno=web.1 connect=3ms service=8ms status=404 bytes=253
+2014-11-12T11:57:54.148245+00:00 heroku[router]: at=info method=GET path="/fuera" host=losbarkitos.herokuapp.com request_id=73313d9b-bfc5-4555-a777-188b0befa033 fwd="95.121.147.127" dyno=web.1 connect=1ms service=5ms status=301 bytes=228
+2014-11-12T11:57:54.150160+00:00 app[web.1]: [12/Nov/2014 11:57:54] "GET /fuera HTTP/1.1" 301 0
+2014-11-12T11:57:55.338975+00:00 heroku[router]: at=info method=GET path="/fuera/" host=losbarkitos.herokuapp.com request_id=9302c3bd-d0b9-4d67-81dd-39a432337eb1 fwd="95.121.147.127" dyno=web.1 connect=0ms service=7ms status=500 bytes=207
+2014-11-12T11:57:55.346113+00:00 app[web.1]: [12/Nov/2014 11:57:55] "GET /fuera/ HTTP/1.1" 500 27
+2014-11-12T11:57:56.400558+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=losbarkitos.herokuapp.com request_id=3fdc9319-f755-4eed-8ee8-663f790d7a0a fwd="95.121.147.127" dyno=web.1 connect=0ms service=5ms status=404 bytes=253
+2014-11-12T11:57:56.407243+00:00 app[web.1]: [12/Nov/2014 11:57:56] "GET /favicon.ico HTTP/1.1" 404 85
+2014-11-12T13:07:50.086255+00:00 heroku[web.1]: Idling
+2014-11-12T13:07:50.087205+00:00 heroku[web.1]: State changed from up to down
+2014-11-12T13:07:51.922632+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2014-11-12T13:07:53.022056+00:00 heroku[web.1]: Process exited with status 143
+2014-11-12T13:44:20.210589+00:00 heroku[web.1]: Unidling
+2014-11-12T13:44:20.210991+00:00 heroku[web.1]: State changed from down to starting
+2014-11-12T13:44:35.175704+00:00 app[web.1]: Starting development server at http://0.0.0.0:54584/
+2014-11-12T13:44:35.158282+00:00 app[web.1]: 
+2014-11-12T13:44:35.175699+00:00 app[web.1]: November 12, 2014 - 13:44:35
+2014-11-12T13:44:35.175702+00:00 app[web.1]: Django version 1.7, using settings 'LosBarkitosProyecto.settings'
+2014-11-12T13:44:35.175706+00:00 app[web.1]: Quit the server with CONTROL-C.
+2014-11-12T13:44:35.158232+00:00 app[web.1]: Performing system checks...
+2014-11-12T13:44:35.169393+00:00 app[web.1]: System check identified no issues (0 silenced).
+2014-11-12T13:44:35.410037+00:00 heroku[web.1]: State changed from starting to up
+2014-11-12T13:44:36.642652+00:00 heroku[router]: at=info method=GET path="/fuera/" host=losbarkitos.herokuapp.com request_id=2b3bb00c-8997-44ae-a193-4fc83ddaf84a fwd="95.121.147.127" dyno=web.1 connect=1ms service=59ms status=500 bytes=207
+2014-11-12T13:44:36.640881+00:00 app[web.1]: [12/Nov/2014 13:44:36] "GET /fuera/ HTTP/1.1" 500 27
+2014-11-12T13:44:34.119077+00:00 heroku[web.1]: Starting process with command `python manage.py runserver 0.0.0.0:54584 --noreload`
