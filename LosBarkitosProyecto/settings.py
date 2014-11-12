@@ -35,8 +35,8 @@ try:
             'PORT': url.port,
         })
 
-        if url.scheme == 'mysql':
-            DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
+    if url.scheme == 'mysql':
+        DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
 except Exception:
     print 'Error en la BDD:', sys.exc_info()
 
