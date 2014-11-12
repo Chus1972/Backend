@@ -29,7 +29,6 @@ JSON CON LAS BARCAS QUE ESTAN FUERA POR ORDEN DE LLEGADA
 '''
 def barcasFuera(request):
 	lista_fuera = Barca.objects.all().order_by('libre')
-	print '--------';print lista_fuera;print '----------'
 
 	data = {}
 	lista_data = []
