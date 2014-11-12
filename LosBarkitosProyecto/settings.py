@@ -15,7 +15,7 @@ import urlparse
 
 #Registra database schemes en la URL's
 urlparse.uses_netloc.append('mysql')
-
+DATABASES = {}
 try:
     # Chequea para asegurarse de que DATABASES esta en settings.py
     if 'DATABASES' not in locals():
