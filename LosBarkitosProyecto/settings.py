@@ -40,8 +40,8 @@ try:
 except Exception:
     print 'Error en la BDD:', sys.exc_info()
 
-#import dj_database_url
-#DATABASES['default'] =  dj_database_url.config()
+import dj_database_url
+DATABASES['default'] =  dj_database_url.config()
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
