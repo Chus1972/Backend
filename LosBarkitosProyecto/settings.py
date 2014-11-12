@@ -10,6 +10,36 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import sys
+import urlparse
+
+#Registra database schemes en la URL's
+urlparse.uses_netloc.append('mysql')
+
+try:
+    # Chequea para asegurarse de que DATABASES esta en settings.py
+    if 'DATABASES' not in locals():
+        DATABASES = {}
+    if 'DATABASE_URL' in os.environ:
+        url = urlparse.urlparse(os.environ['DATABASE_URL'])
+
+        # Se asegura que  la BDD por default existe
+        DATABASES['default'] = DATABASES.get('default', {})
+
+        # update con la configuracion de environment
+        DATABASES['default'].update({
+            'NAME' : url.path[1:],
+            'USER' : url.username,
+            'PASSWORD' : url.password,
+            'HOST': url.hostname,
+            'PORT': url.port,
+        })
+
+        if url.scheme == 'mysql':
+            DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
+except Exception:
+    print 'Error en la BDD:', sys.exc_info()
+
 #import dj_database_url
 #DATABASES['default'] =  dj_database_url.config()
 
@@ -27,7 +57,7 @@ DEBUG = False
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -69,7 +99,7 @@ WSGI_APPLICATION = 'LosBarkitosProyecto.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-DATABASES = {
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'LosBarkitosNAS',
@@ -78,7 +108,7 @@ DATABASES = {
         'HOST': 'marinaferry.no-ip.org',
         'PORT': '3306',
     }
-}
+}'''
 '''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
