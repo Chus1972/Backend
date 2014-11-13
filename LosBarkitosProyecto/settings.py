@@ -16,7 +16,7 @@ import urlparse
 #Registra database schemes en la URL's
 urlparse.uses_netloc.append('mysql')
 DATABASES = {}
-try:
+'''try:
     # Chequea para asegurarse de que DATABASES esta en settings.py
     if 'DATABASES' not in locals():
         DATABASES = {}
@@ -38,7 +38,7 @@ try:
         if url.scheme == 'mysql':
             DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
 except Exception:
-    print 'Error en la BDD:', sys.exc_info()
+    print 'Error en la BDD:', sys.exc_info()'''
 
 #import dj_database_url
 #DATABASES['default'] =  dj_database_url.config()
@@ -111,16 +111,16 @@ WSGI_APPLICATION = 'LosBarkitosProyecto.wsgi.application'
         'PORT': '3306',
     }
 }'''
-'''DATABASES = {
+DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'LosBarkitosPostgres',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'heroku_c71c74c67cde020',
+        'USER': 'b17e70697e2374',
+        'PASSWORD': '3eaf2e91',
+        'HOST': 'eu-cdbr-west-01.cleardb.com',
+        'PORT': '3306',
     }
-}'''
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
