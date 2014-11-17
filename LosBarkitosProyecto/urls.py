@@ -9,7 +9,7 @@ from LosBarkitosApp.views import llegadaBarca
 from LosBarkitosApp.views import disponible
 from LosBarkitosApp.views import noDisponible
 from LosBarkitosApp.controlViaje import registroBarca, listadoViajes
-from LosBarkitosApp.controlVendedor import ventaVendedor
+from LosBarkitosApp.controlVendedor import ventaVendedor, vendedores
 from LosBarkitosApp.views import resetear
 from LosBarkitosApp.controlReserva import reserva, reserva_fuera
 
@@ -35,6 +35,7 @@ urlpatterns = patterns('',
     #url(r'^barcas/$', 'LosBarkitosApp.views.barcas'),
     url(r'^registro_barca/([1-5])/([1-9][0-9]*)/([123])/([12345])/$', registroBarca),
     url(r'^venta_vendedor/([1-9])/$', ventaVendedor),
+    url(r'^vendedores/$', vendedores),
     url(r'^resetear_barcas/$', resetear),
     url(r'^reserva/(Rio|Electrica|Whaly|Gold)/([123])$', reserva),
     url(r'^reserva_fuera/([0-9]+)/$', reserva_fuera),
