@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 from .models import Barca, Reserva, Control, PuntoVenta, TipoBarca
 from datetime import datetime, timedelta
 import json, urllib

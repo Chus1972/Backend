@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 # funciones para el control del tickets
 from django.http import HttpResponse
 from .models import Viaje

@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 from django.http import HttpResponse
 from .models import Vendedor
 from .models import Viaje
