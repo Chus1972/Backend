@@ -24,4 +24,4 @@ def vendedores(request):
 	for v in vend:
 		datos['codigo'] = v['nombre']
 
-	return HttpResponse(json.dumps(datos), 'application/json')
+	return HttpResponse(json.dumps(vend), 'application/json')
