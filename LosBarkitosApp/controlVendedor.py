@@ -19,9 +19,5 @@ def ventaVendedor(request, nv):
 
 def vendedores(request):
 	vend = Vendedor.objects.all()
-	datos = {}
-
-	for v in vend:
-		datos['codigo'] = v['nombre']
 
 	return HttpResponse(json.dumps(vend), 'application/json')
