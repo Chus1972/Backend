@@ -22,7 +22,7 @@ def vendedores(request):
 	datos = []
 
 	for v in vend:
-		datos.append(v.nombre)
+		datos = {'codigo':v.codigo, 'nombnre':v.nombre}
 	print datos
 
 	return HttpResponse(json.dumps(datos), 'application/json')
