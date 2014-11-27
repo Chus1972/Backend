@@ -19,5 +19,11 @@ def ventaVendedor(request, nv):
 
 def vendedores(request):
 	vend = Vendedor.objects.all()
+	data = []
+	dictVendedor = {}
 
-	return HttpResponse(json.dumps(vend), 'application/json')
+	for v in vend:
+		dictVendedor = {'codigo':v.codigo,'nombre':v.nombre}
+		data.append(dictVendedor)
+
+	return HttpResponse(json.dumps(data), 'application/json')

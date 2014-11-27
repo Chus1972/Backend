@@ -36,7 +36,7 @@ class Vendedor(models.Model):
 	nombre = models.CharField(max_length = 50)
 
 	def __unicode__(self):
-		return "%s".encode('utf8') % (self.nombre)
+		return "%i%s".encode('utf8') % (self.codigo,self.nombre)
 
 class Reserva(models.Model):
 	numero 		  = models.IntegerField()
