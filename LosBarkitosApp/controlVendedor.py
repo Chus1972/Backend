@@ -19,7 +19,7 @@ def ventaVendedor(request, nv):
 
 def vendedores(request):
 	vend = Vendedor.objects.all()
-	datos = []
+	datos = {}
 
 	for v in vend:
 		datos += {'codigo':v.codigo, 'nombre':v.nombre}
