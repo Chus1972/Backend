@@ -21,11 +21,12 @@ def vendedores(request):
 	vend = Vendedor.objects.all()
 	data = {}
 	dictVendedor = {}
-
+	indice = 1
 	for v in vend:
 		dictVendedor = {'codigo':v.codigo,'nombre':v.nombre}
+		data[str(indice)] = dictVendedor
+		indice += 1
 
-	data['datos'] = dictVendedor
 	data['error'] = "no"
 	try:
 		jsonDict =json.dumps(data)
