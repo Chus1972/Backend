@@ -24,6 +24,12 @@ def vendedores(request):
 
 	for v in vend:
 		dictVendedor = {'codigo':v.codigo,'nombre':v.nombre}
-		data.append(dictVendedor)
 
-	return HttpResponse(json.dumps(data), 'application/json')
+	data['datos'] = dictVendedor
+	data['error'] = "no"
+	try:
+		jsonDict =json.dumps(data)
+	except Exception, e:
+		data['error'] = e.strerror
+
+	return HttpResponse(jsonDict, 'application/json')
