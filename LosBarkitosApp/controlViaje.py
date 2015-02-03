@@ -11,7 +11,7 @@ import json
 from django.core.serializers.json import DjangoJSONEncoder
 
 # Se tiene que insertar un registro en la base de datos Viaje.
-# Hay que tener en cuenta que el numero sale de Control y se 
+# Hay que tener en cuenta que el numero sale de Control y se
 # tiene que incrementar este numero y volverlo a grabar
 def registroBarca(request, tipo, precio, pv, vend):
 
@@ -56,7 +56,7 @@ def listadoViajes(request, tipo, pv, vend):
 
 	if vend != '0':
 		filtro_vend = Vendedor.objects.get(codigo = vend)
-	filtro_fecha = datetime.now.isoformat()
+	filtro_fecha = datetime.datetime.now()
 
 	if   tipo != '0' and pv != '0' and vend != '0':
 		viajes = Viaje.objects.filter(barca = filtro_tipo, punto_venta = filtro_pv, vendedor = filtro_vend)
@@ -73,7 +73,7 @@ def listadoViajes(request, tipo, pv, vend):
 	elif tipo == '0' and pv == '0' and vend != '0':
 		viajes = Viaje.objects.filter(vendedor = filtro_vend)
 	elif tipo == '0' and pv == '0' and vend == '0':
-		viajes = Viaje.objects.filter(fecha = filtro_fecha)
+		viajes = Viaje.objects.filter(fecha__year = filtro_fecha.year(), fecha__month = filtro_fecha.month(), fecha__day = filtro_fecha.day())
 
 	dict_viaje = []
 	for viaje in viajes:
