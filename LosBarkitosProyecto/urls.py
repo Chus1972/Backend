@@ -15,6 +15,8 @@ from LosBarkitosApp.controlReserva import reserva, reserva_fuera
 
 #router = routers.DefaultRouter()
 #router.register(r'barca', BarcaViewSet)
+## hola
+
 
 admin.autodiscover()
 
