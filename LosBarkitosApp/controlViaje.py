@@ -51,12 +51,12 @@ def registroBarca(request, tipo, precio, pv, vend):
 def listadoViajes(request, tipo, pv, vend):
 	if tipo != '0':
 		filtro_tipo = TipoBarca.objects.get(codigo = tipo)
-
 	if pv != '0':
 		filtro_pv = PuntoVenta.objects.get(codigo = pv)
 
 	if vend != '0':
 		filtro_vend = Vendedor.objects.get(codigo = vend)
+	filtro_fecha = datetime.now.isoformat()
 
 	if   tipo != '0' and pv != '0' and vend != '0':
 		viajes = Viaje.objects.filter(barca = filtro_tipo, punto_venta = filtro_pv, vendedor = filtro_vend)
@@ -73,7 +73,7 @@ def listadoViajes(request, tipo, pv, vend):
 	elif tipo == '0' and pv == '0' and vend != '0':
 		viajes = Viaje.objects.filter(vendedor = filtro_vend)
 	elif tipo == '0' and pv == '0' and vend == '0':
-		viajes = Viaje.objects.filter(fecha.isoformat() = datetime.now().isoformat())
+		viajes = Viaje.objects.filter(fecha = filtro_fecha)
 
 	dict_viaje = []
 	for viaje in viajes:
