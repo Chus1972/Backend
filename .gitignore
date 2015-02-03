@@ -1,4 +1,5 @@
 # Ignones
+.DS_Store
 venv
 *.pyc
 *.pyo

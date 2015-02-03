@@ -48,7 +48,6 @@ def registroBarca(request, tipo, precio, pv, vend):
 	return HttpResponse(json.dumps(data), 'application/json')
 
 # Devuelve un listado de los viajes segun el tipo de barca (0 para todos), punto de venta, o vendedor
-
 def listadoViajes(request, tipo, pv, vend):
 	if tipo != '0':
 		filtro_tipo = TipoBarca.objects.get(codigo = tipo)
