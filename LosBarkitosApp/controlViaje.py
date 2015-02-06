@@ -56,6 +56,7 @@ def listadoViajes(request, tipo, pv, vend):
 
 	if vend != '0':
 		filtro_vend = Vendedor.objects.get(codigo = vend)
+
 	filtro_fecha = datetime.datetime.now()
 
 	if   tipo != '0' and pv != '0' and vend != '0':
@@ -73,7 +74,7 @@ def listadoViajes(request, tipo, pv, vend):
 	elif tipo == '0' and pv == '0' and vend != '0':
 		viajes = Viaje.objects.filter(vendedor = filtro_vend)
 	elif tipo == '0' and pv == '0' and vend == '0':
-		viajes = Viaje.objects.filter(fecha__year = filtro_fecha.year(), fecha__month = filtro_fecha.month(), fecha__day = filtro_fecha.day())
+		viajes = Viaje.objects.filter(fecha__year = filtro_fecha.strftime("%Y"), fecha__month = filtro_fecha.strftime("%m"), fecha__day = filtro_fecha.strftime("%d"))
 
 	dict_viaje = []
 	for viaje in viajes:

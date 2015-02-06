@@ -74,7 +74,7 @@ WSGI_APPLICATION = 'LosBarkitosProyecto.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-'''DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'LosBarkitosNAS',
@@ -83,8 +83,8 @@ WSGI_APPLICATION = 'LosBarkitosProyecto.wsgi.application'
         'HOST': 'marinaferry.no-ip.org',
         'PORT': '3306',
     }
-}'''
-DATABASES = {
+}
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'heroku_c71c74c67cde020',
@@ -93,7 +93,7 @@ DATABASES = {
         'HOST': 'eu-cdbr-west-01.cleardb.com',
         'PORT': '3306',
     }
-}
+}'''
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
