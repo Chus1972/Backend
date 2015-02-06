@@ -32,7 +32,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = ['losbarkitos.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
