@@ -76,10 +76,11 @@ def listadoViajes(request, tipo, pv, vend):
 	elif tipo == '0' and pv == '0' and vend == '0':
 		viajes = Viaje.objects.filter(fecha__year = filtro_fecha.strftime("%Y"), fecha__month = filtro_fecha.strftime("%m"), fecha__day = filtro_fecha.strftime("%d"))
 
-	dict_viaje = []
+	dict_viaje = {}
+	datos = {}
 	for viaje in viajes:
-		data = {'Numero' : viaje.numero, 'Fecha' : viaje.fecha.isoformat(), 'Barca' : viaje.barca.tipo, 'Punto Venta' : viaje.punto_venta.nombre, 'Vendedor' : viaje.vendedor.nombre, 'Precio' : viaje.precio}
-		dict_viaje.append(data)
+		datos = {'numero': viaje.numero, 'fecha': viaje.fecha.isoformat(), 'tipo':viaje.barca.tipo, 'punto_venta':viaje.punto_venta.nombre, 'nombre_vendedor':viaje.vendedor.nombre, 'precio':viaje.precio}
+		dict_viaje.append(datos)
 
 	return HttpResponse(json.dumps(dict_viaje), 'application/json')
 
