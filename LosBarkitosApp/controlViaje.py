@@ -76,6 +76,8 @@ def listadoViajes(request, tipo, pv, vend):
 	elif tipo == '0' and pv == '0' and vend == '0':
 		viajes = Viaje.objects.filter(fecha__year = filtro_fecha.strftime("%Y"), fecha__month = filtro_fecha.strftime("%m"), fecha__day = filtro_fecha.strftime("%d"))
 
+	print(filtro_fecha.strftime("%Y"))
+	
 	dict_viaje = {}
 	datos = {}
 	for viaje in viajes:
