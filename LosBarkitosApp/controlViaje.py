@@ -57,7 +57,7 @@ def listadoViajes(request, tipo, pv, vend):
 	if vend != '0':
 		filtro_vend = Vendedor.objects.get(codigo = vend)
 
-	filtro_fecha = datetime.datetime(2014, 5, 20, 10, 0))
+	filtro_fecha = datetime.datetime(2014, 5, 20, 10, 0)
 
 	if   tipo != '0' and pv != '0' and vend != '0':
 		viajes = Viaje.objects.filter(barca = filtro_tipo, punto_venta = filtro_pv, vendedor = filtro_vend)
