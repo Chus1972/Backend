@@ -6,6 +6,7 @@ from .models import PuntoVenta
 from .models import TipoBarca
 from .models import Vendedor
 from .models import Control
+from datetime import *
 import datetime
 import json
 from django.core.serializers.json import DjangoJSONEncoder
@@ -49,6 +50,7 @@ def registroBarca(request, tipo, precio, pv, vend):
 
 # Devuelve un listado de los viajes segun el tipo de barca (0 para todos), punto de venta, o vendedor
 def listadoViajes(request, tipo, pv, vend):
+	today = date.today()
 	if tipo != '0':
 		filtro_tipo = TipoBarca.objects.get(codigo = tipo)
 	if pv != '0':
@@ -57,7 +59,10 @@ def listadoViajes(request, tipo, pv, vend):
 	if vend != '0':
 		filtro_vend = Vendedor.objects.get(codigo = vend)
 
-	filtro_fecha = datetime.datetime(2014, 5, 20, 10, 0)
+	filtro_fecha = datetime.datetime.now()
+	filtro_fecha_A = datetime.datetime.now().year
+	filtro_fecha_M = datetime.datetime.now().month
+	filtro_fecha_D = datetime.datetime.now().day
 
 	if   tipo != '0' and pv != '0' and vend != '0':
 		viajes = Viaje.objects.filter(barca = filtro_tipo, punto_venta = filtro_pv, vendedor = filtro_vend)
@@ -74,15 +79,23 @@ def listadoViajes(request, tipo, pv, vend):
 	elif tipo == '0' and pv == '0' and vend != '0':
 		viajes = Viaje.objects.filter(vendedor = filtro_vend)
 	elif tipo == '0' and pv == '0' and vend == '0':
-		viajes = Viaje.objects.filter(fecha__year = filtro_fecha.strftime("%Y"), fecha__month = filtro_fecha.strftime("%m"), fecha__day = filtro_fecha.strftime("%d"))
-
-	print(filtro_fecha.strftime("%Y"))
+		viajes = Viaje.objects.filter(fecha__startswith = filtro_fecha.date())
 
 	dict_viaje = {}
 	datos = {}
+	i = 1
 	for viaje in viajes:
 		datos = {'numero': viaje.numero, 'fecha': viaje.fecha.isoformat(), 'tipo':viaje.barca.tipo, 'punto_venta':viaje.punto_venta.nombre, 'nombre_vendedor':viaje.vendedor.nombre, 'precio':viaje.precio}
-		dict_viaje.append(datos)
+		dict_viaje[str(i)] = datos
+		i += 1
 
-	return HttpResponse(json.dumps(dict_viaje), 'application/json')
+	dict_viaje['error'] = 'no'
+
+	try:
+		jsonDict = json.dumps(dict_viaje)
+	except Exception, e:
+		data['error'] = e.strerror
+
+
+	return HttpResponse(jsonDict, 'application/json')
 
