@@ -59,10 +59,10 @@ def listadoViajes(request, tipo, pv, vend):
 	if vend != '0':
 		filtro_vend = Vendedor.objects.get(codigo = vend)
 
-	filtro_fecha = datetime.datetime.now()
-	filtro_fecha_A = datetime.datetime.now().year
-	filtro_fecha_M = datetime.datetime.now().month
-	filtro_fecha_D = datetime.datetime.now().day
+	filtro_fecha = datetime.datetime.now.date()
+	#filtro_fecha_A = datetime.datetime.now().year
+	#filtro_fecha_M = datetime.datetime.now().month
+	#filtro_fecha_D = datetime.datetime.now().day
 
 	if   tipo != '0' and pv != '0' and vend != '0':
 		viajes = Viaje.objects.filter(barca = filtro_tipo, punto_venta = filtro_pv, vendedor = filtro_vend)
@@ -79,13 +79,13 @@ def listadoViajes(request, tipo, pv, vend):
 	elif tipo == '0' and pv == '0' and vend != '0':
 		viajes = Viaje.objects.filter(vendedor = filtro_vend)
 	elif tipo == '0' and pv == '0' and vend == '0':
-		viajes = Viaje.objects.filter(fecha__startswith = filtro_fecha.date())
+		viajes = Viaje.objects.filter(fecha__startswith = datetime.strftime(filtro_fecha, "%x"))
 
 	dict_viaje = {}
 	datos = {}
 	i = 1
 	for viaje in viajes:
-		datos = {'numero': viaje.numero, 'fecha': viaje.fecha.isoformat(), 'tipo':viaje.barca.tipo, 'punto_venta':viaje.punto_venta.nombre, 'nombre_vendedor':viaje.vendedor.nombre, 'precio':viaje.precio}
+		datos = {'numero': viaje.numero, 'fecha': viaje.fecha.strftime(), 'tipo':viaje.barca.tipo, 'punto_venta':viaje.punto_venta.nombre, 'nombre_vendedor':viaje.vendedor.nombre, 'precio':viaje.precio}
 		dict_viaje[str(i)] = datos
 		i += 1
 
