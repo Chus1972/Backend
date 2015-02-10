@@ -79,7 +79,7 @@ def listadoViajes(request, tipo, pv, vend):
 	elif tipo == '0' and pv == '0' and vend != '0':
 		viajes = Viaje.objects.filter(vendedor = filtro_vend)
 	elif tipo == '0' and pv == '0' and vend == '0':
-		viajes = Viaje.objects.filter(fecha__startswith = filtro_fecha.date())
+		viajes = Viaje.objects.filter(fecha__startswith = filtro_fecha.date()).order_by('fecha')
 
 	dict_viaje = {}
 	datos = {}
