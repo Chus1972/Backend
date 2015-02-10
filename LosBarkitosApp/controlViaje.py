@@ -50,7 +50,6 @@ def registroBarca(request, tipo, precio, pv, vend):
 
 # Devuelve un listado de los viajes segun el tipo de barca (0 para todos), punto de venta, o vendedor
 def listadoViajes(request, tipo, pv, vend):
-	today = date.today()
 	if tipo != '0':
 		filtro_tipo = TipoBarca.objects.get(codigo = tipo)
 	if pv != '0':
@@ -79,7 +78,8 @@ def listadoViajes(request, tipo, pv, vend):
 	elif tipo == '0' and pv == '0' and vend != '0':
 		viajes = Viaje.objects.filter(vendedor = filtro_vend)
 	elif tipo == '0' and pv == '0' and vend == '0':
-		viajes = Viaje.objects.filter(fecha__startswith = filtro_fecha.date()).order_by('fecha')
+		viajes = Viaje.objects.filter(fecha__startswith = filtro_fecha.date())
+
 
 	dict_viaje = {}
 	datos = {}
@@ -98,4 +98,5 @@ def listadoViajes(request, tipo, pv, vend):
 
 
 	return HttpResponse(jsonDict, 'application/json')
+
 

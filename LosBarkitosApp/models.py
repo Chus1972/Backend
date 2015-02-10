@@ -69,7 +69,7 @@ class Viaje(models.Model):
 	vendedor 	  = models.ForeignKey(Vendedor)
 
 	class meta:
-		ordering = ('fecha',)
+		ordering = ['-numero']
 
 	def __unicode__(self):
 		return "Numero: %s".encode('utf8') % (self.numero)
