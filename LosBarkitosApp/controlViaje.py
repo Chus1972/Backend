@@ -99,4 +99,17 @@ def listadoViajes(request, tipo, pv, vend):
 
 	return HttpResponse(jsonDict, 'application/json')
 
+def ultimoNumero(request):
+	datos = Control.objects.get()
+	num = datos.num_viaje
 
+	dicc = {}
+	dicc['error'] = 'no'
+	dicc['numero'] = num
+	try:
+		jsonDict = json.dumps(dicc)
+	except Exception, e:
+		dicc['error'] = e.strerror
+		jsonDict = json.dumps(dicc)
+
+	return HttpResponse(jsonDict, 'application/json')
