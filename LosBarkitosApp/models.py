@@ -56,6 +56,7 @@ class Ticket(models.Model):
 	punto_venta   = models.ForeignKey(PuntoVenta)
 	vendedor      = models.ForeignKey(Vendedor)
 	part		  = models.BooleanField(default = False)
+	blanco		  = models.BooleanField(default = True)
 
 	def __unicode__(self):
 		return "Numero: %i".encode('utf8') % (self.numero)
@@ -67,6 +68,7 @@ class Viaje(models.Model):
 	punto_venta	  = models.ForeignKey(PuntoVenta)
 	barca 		  = models.ForeignKey(TipoBarca)
 	vendedor 	  = models.ForeignKey(Vendedor)
+	blanco		  = models.BooleanField(default = True)
 
 	class meta:
 		ordering = ['-numero']
