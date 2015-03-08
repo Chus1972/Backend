@@ -2,28 +2,43 @@
 from django.http import HttpResponse
 from .models import Barca, Control, Reserva
 import json, urllib
-from datetime import datetime, timedelta
+from datetime import datetime
 
 # Funciones para el control de las barcas
 '''
 JSON CON LAS BARCAS QUE ESTAN POR LLEGAR POR ORDEN DE LLEGADA
 '''
-def llegada(request):
-	# Se recoge la lista de barcas fuera por orden de llegada
-	listaBarcas = Barca.objects.all().order_by('tipo_barca','libre', 'control', 'codigo',)
+def llegada(request, tipo):
+
+	if tipo == 'Rio':
+		tipo_barca = 1
+	elif tipo == 'Electrica':
+		tipo_barca = 2
+	elif tipo == 'Whaly':
+		tipo_barca = 3
+	elif tipo == 'Gold':
+		tipo_barca = 4
+	else:
+		tipo_barca = 0
+
+	# Se recoge la lista de barcas fuera por orden de llegada y segun el tipo de barca
+	if tipo_barca == 0:
+		listaBarcas = Barca.objects.all().order_by('tipo_barca','libre', 'control', 'codigo',)
+	else:
+		listaBarcas = Barca.objects.filter(tipo_barca = tipo_barca).order_by('tipo_barca','libre', 'control', 'codigo',)
 
 	data = {}
-	lista_data = []
+	dict_data = {}
 	for barca in listaBarcas:
 		tipo = barca.tipo_barca
 		if barca.libre == None: # quiere decir que la barca esta libre
 			hora = 'libre'
 		else:
 			hora = datetime.time(barca.libre).isoformat()
-		data = {'Tipo' : barca.tipo_barca, 'Nombre' : barca.nombre, 'Tipo' : tipo.tipo, 'libre' : hora}
-		lista_data.append(data)
+		data = {'Tipo' : barca.tipo_barca, 'Nombre' : barca.nombre, 'libre' : hora, 'vueltas' : barca.control}
+		dict_data.append(data)
 
-	return HttpResponse(json.dumps(lista_data), "application/json")
+	return HttpResponse(json.dumps(dict_data), "application/json")
 
 '''
 JSON CON LAS BARCAS QUE ESTAN FUERA POR ORDEN DE LLEGADA
