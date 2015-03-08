@@ -100,7 +100,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'es-es'
 
-TIME_ZONE = 'ES'
+TIME_ZONE = 'Europe/Paris'
 
 USE_I18N = True
 
