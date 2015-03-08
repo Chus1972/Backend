@@ -27,6 +27,7 @@ def llegada(request, tipo):
 	else:
 		listaBarcas = Barca.objects.filter(tipo_barca = tipo_barca).order_by('tipo_barca','libre', 'control', 'codigo',)
 
+	indice = 1
 	data = {}
 	dict_data = {}
 	for barca in listaBarcas:
@@ -36,7 +37,8 @@ def llegada(request, tipo):
 		else:
 			hora = datetime.time(barca.libre).isoformat()
 		data = {'Tipo' : barca.tipo_barca, 'Nombre' : barca.nombre, 'libre' : hora, 'vueltas' : barca.control}
-		dict_data.append(data)
+		dict_data[str(indice)] = data
+		indice += 1
 
 	return HttpResponse(json.dumps(dict_data), "application/json")
 

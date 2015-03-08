@@ -96,7 +96,6 @@ def listadoViajes(request, tipo, pv, vend):
 	except Exception, e:
 		data['error'] = e.strerror
 
-
 	return HttpResponse(jsonDict, 'application/json')
 
 def ultimoNumero(request):
