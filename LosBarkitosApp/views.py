@@ -27,10 +27,10 @@ def llegada(request, tipo):
 	else:
 		listaBarcas = Barca.objects.filter(tipo_barca = tipo_barca).order_by('tipo_barca','libre', 'control', 'codigo',)
 
+
 	indice = 1
 	data = {}
 	dict_data = {}
-
 	for barca in listaBarcas:
 		tipo = barca.tipo_barca
 		if tipo != 0:
