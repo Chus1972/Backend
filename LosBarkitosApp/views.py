@@ -40,7 +40,7 @@ def llegada(request, tipo):
 			hora = 'libre'
 		else:
 			hora = datetime.time(barca.libre).isoformat()
-		data = {'Tipo' : regTipo.nombre, 'Nombre' : barca.nombre, 'libre' : hora, 'vueltas' : barca.control}
+		data = {'Tipo' : regTipo.tipo, 'Nombre' : barca.nombre, 'libre' : hora, 'vueltas' : barca.control}
 		dict_data[str(indice)] = data
 		indice += 1
 
