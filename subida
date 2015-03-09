@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-su
+su Otisuhc0
 git add .
 git commit -am "subida"
 git push origin master
