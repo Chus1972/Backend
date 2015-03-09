@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 from django.http import HttpResponse
-from .models import Barca, Control, Reserva
+from .models import Barca, Control, Reserva, TipoBarca
 import json, urllib
 from datetime import datetime
 
@@ -21,6 +21,7 @@ def llegada(request, tipo):
 	else:
 		tipo_barca = 0
 
+	regTipo = TipoBarca.objects.get(codigo = tipo_barca)
 	# Se recoge la lista de barcas fuera por orden de llegada y segun el tipo de barca
 	if tipo_barca == 0:
 		listaBarcas = Barca.objects.all().order_by('tipo_barca','libre', 'control', 'codigo',)
@@ -36,7 +37,7 @@ def llegada(request, tipo):
 			hora = 'libre'
 		else:
 			hora = datetime.time(barca.libre).isoformat()
-		data = {'Tipo' : barca.tipo_barca, 'Nombre' : barca.nombre, 'libre' : hora, 'vueltas' : barca.control}
+		data = {'Tipo' : regTipo.nombre, 'Nombre' : barca.nombre, 'libre' : hora, 'vueltas' : barca.control}
 		dict_data[str(indice)] = data
 		indice += 1
 
