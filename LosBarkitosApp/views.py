@@ -27,22 +27,27 @@ def llegada(request, tipo):
 	else:
 		listaBarcas = Barca.objects.filter(tipo_barca = tipo_barca).order_by('tipo_barca','libre', 'control', 'codigo',)
 
-
 	indice = 1
 	data = {}
 	dict_data = {}
-	for barca in listaBarcas:
-		tipo = barca.tipo_barca
-		if tipo != 0:
-			regTipo = TipoBarca.objects.get(codigo = tipo)
+	try:
+		for barca in listaBarcas:
+			tipo = barca.tipo_barca
+			if tipo != 0:
+				regTipo = TipoBarca.objects.get(codigo = tipo)
 
-		if barca.libre == None: # quiere decir que la barca esta libre
-			hora = 'libre'
-		else:
-			hora = datetime.time(barca.libre).isoformat()
-		data = {'Tipo' : regTipo.tipo, 'Nombre' : barca.nombre, 'libre' : hora, 'vueltas' : barca.control}
-		dict_data[str(indice)] = data
-		indice += 1
+			if barca.libre == None: # quiere decir que la barca esta libre
+				hora = 'libre'
+			else:
+				hora = datetime.time(barca.libre).isoformat()
+			data = {'Tipo' : regTipo.tipo, 'Nombre' : barca.nombre, 'libre' : hora, 'vueltas' : barca.control}
+			dict_data[str(indice)] = data
+			indice += 1
+
+	except TypeError:
+		data = {'error' : 'si'}
+		dict_data["error"] = data
+
 
 	return HttpResponse(json.dumps(dict_data), "application/json")
 
