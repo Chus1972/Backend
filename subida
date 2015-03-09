@@ -1,0 +1,9 @@
+#!/bin/bash
+clear
+su
+git add .
+git commit -am "subida"
+git push origin master
+exit
+git push heroku master
+

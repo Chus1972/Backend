@@ -21,19 +21,21 @@ def llegada(request, tipo):
 	else:
 		tipo_barca = 0
 
-	if tipo_barca != 0:
-		regTipo = TipoBarca.objects.get(codigo = tipo_barca)
 	# Se recoge la lista de barcas fuera por orden de llegada y segun el tipo de barca
 	if tipo_barca == 0:
 		listaBarcas = Barca.objects.all().order_by('tipo_barca','libre', 'control', 'codigo',)
 	else:
 		listaBarcas = Barca.objects.filter(tipo_barca = tipo_barca).order_by('tipo_barca','libre', 'control', 'codigo',)
 
+
 	indice = 1
 	data = {}
 	dict_data = {}
 	for barca in listaBarcas:
 		tipo = barca.tipo_barca
+		if tipo != 0:
+			regTipo = TipoBarca.objects.get(codigo = tipo_barca)
+
 		if barca.libre == None: # quiere decir que la barca esta libre
 			hora = 'libre'
 		else:
