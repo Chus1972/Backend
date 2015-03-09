@@ -30,24 +30,19 @@ def llegada(request, tipo):
 	indice = 1
 	data = {}
 	dict_data = {}
-	try:
-		for barca in listaBarcas:
-			tipo = barca.tipo_barca
-			if tipo != 0:
-				regTipo = TipoBarca.objects.get(codigo = tipo)
 
-			if barca.libre == None: # quiere decir que la barca esta libre
-				hora = 'libre'
-			else:
-				hora = datetime.time(barca.libre).isoformat()
-			data = {'Tipo' : regTipo.tipo, 'Nombre' : barca.nombre, 'libre' : hora, 'vueltas' : barca.control}
-			dict_data[str(indice)] = data
-			indice += 1
+	for barca in listaBarcas:
+		tipo = barca.tipo_barca
+		if tipo != 0:
+			regTipo = TipoBarca.objects.get(codigo = tipo)
 
-	except TypeError:
-		data = {'error' : 'si'}
-		dict_data["error"] = data
-
+		if barca.libre == None: # quiere decir que la barca esta libre
+			hora = 'libre'
+		else:
+			hora = datetime.time(barca.libre).isoformat()
+		data = {'Tipo' : regTipo.tipo, 'Nombre' : barca.nombre, 'libre' : hora, 'vueltas' : barca.control}
+		dict_data[str(indice)] = data
+		indice += 1
 
 	return HttpResponse(json.dumps(dict_data), "application/json")
 
