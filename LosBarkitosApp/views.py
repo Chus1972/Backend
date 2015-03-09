@@ -34,7 +34,7 @@ def llegada(request, tipo):
 	for barca in listaBarcas:
 		tipo = barca.tipo_barca
 		if tipo != 0:
-			regTipo = TipoBarca.objects.get(codigo = tipo_barca)
+			regTipo = TipoBarca.objects.get(codigo = tipo)
 
 		if barca.libre == None: # quiere decir que la barca esta libre
 			hora = 'libre'

@@ -1,10 +1,7 @@
 #!/bin/bash
 clear
-su 
-Otisuhc0
-git add .
-git commit -am "subida"
-git push origin master
-exit
+sudo git add .
+sudo git commit -am "subida"
+sudo git push origin master
 git push heroku master
 
