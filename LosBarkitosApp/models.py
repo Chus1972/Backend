@@ -52,7 +52,7 @@ class Reserva(models.Model):
 
 class Ticket(models.Model):
 	numero		  = models.IntegerField()
-	precio		  = models.DecimalField(max_digits = None, decimal_places = 2)
+	precio		  = models.DecimalField(max_digits = 5, decimal_places = 2)
 	fecha		  = models.DateTimeField()
 	punto_venta   = models.ForeignKey(PuntoVenta)
 	vendedor      = models.ForeignKey(Vendedor)
