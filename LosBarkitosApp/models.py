@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from decimal import *
 
 
 # Create your models here.
@@ -51,7 +52,7 @@ class Reserva(models.Model):
 
 class Ticket(models.Model):
 	numero		  = models.IntegerField()
-	precio		  = models.IntegerField()
+	precio		  = models.DecimalField(max_digits = None, decimal_places = 2)
 	fecha		  = models.DateTimeField()
 	punto_venta   = models.ForeignKey(PuntoVenta)
 	vendedor      = models.ForeignKey(Vendedor)

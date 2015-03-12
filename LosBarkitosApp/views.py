@@ -227,3 +227,20 @@ def resetear(request):
 
 
 	return HttpResponse(json.dumps(data), 'application/json')
+
+def totalBarcas(request):
+	tipoRio 		= TipoBarca.objects.get(codigo = 1)
+	tipoElectrica	= TipoBarca.objects.get(codigo = 2)
+	tipoWhaly		= TipoBarca.objects.get(codigo = 3)
+	tipoGold		= TipoBarca.objects.get(codigo = 4)
+
+	hoy = time.strftime("%d/%m/%y")
+
+	num_viaje_rio 		= Viaje.objects.filter(barca = tipoRio, fecha.strftime("%d/%m/%y") = hoy).count()
+	num_viaje_electrica = Viaje.objects.filter(barca = tipoElectrica, fecha.strftime("%d/%m/%y") = hoy).count()
+	num_viaje_whaly		= Viaje.objects.filter(barca = tipoWhaly, fecha.strftime("%d/%m/%y") = hoy).count()
+	num_viaje_gold		= Viaje.objects.filter(barca = tipoGold, fecha.strftime("%d/%m/%y") = hoy).count()
+
+	data = {'rio' : num_viaje_rio, 'electrica' : num_viaje_electrica, 'whaly' : num_viaje_whaly, 'gold' : num_viaje_gold}
+
+	return HttpResponse(json.dumps(data), 'application/json')

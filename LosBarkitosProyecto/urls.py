@@ -10,7 +10,7 @@ from LosBarkitosApp.views import disponible
 from LosBarkitosApp.views import noDisponible
 from LosBarkitosApp.controlViaje import registroBarca, listadoViajes, ultimoNumero
 from LosBarkitosApp.controlVendedor import ventaVendedor, vendedores
-from LosBarkitosApp.views import resetear
+from LosBarkitosApp.views import resetear, totalBarcas, totalEuros
 from LosBarkitosApp.controlReserva import reserva, reserva_fuera
 
 #router = routers.DefaultRouter()
@@ -43,4 +43,6 @@ urlpatterns = patterns('',
     url(r'^reserva_fuera/([0-9]+)/$', reserva_fuera),
     url(r'^listado_viaje/(?P<tipo>[01234])/(?P<pv>[0123])/(?P<vend>[01234])/$', listadoViajes),
     url(r'^ultimo_numero/$', ultimoNumero),
+    url(r'^total_barcas/$', totalBarcas),
+    url(r'^total_euros/$', totalEuros),
 )
