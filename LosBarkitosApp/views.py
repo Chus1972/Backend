@@ -1,8 +1,9 @@
 # -*- encoding: utf-8 -*-
 from django.http import HttpResponse
-from .models import Barca, Control, Reserva, TipoBarca
+from .models import Barca, Control, Reserva, TipoBarca, Viaje
 import json, urllib
-from datetime import datetime
+from datetime import datetime, time
+from django.db.models import Count
 
 # Funciones para el control de las barcas
 '''
@@ -235,11 +236,11 @@ def totalBarcas(request):
 	tipoGold		= TipoBarca.objects.get(codigo = 4)
 
 	hoy = time.strftime("%d/%m/%y")
-
-	num_viaje_rio 		= Viaje.objects.filter(barca = tipoRio, fecha.strftime("%d/%m/%y") = hoy).count()
-	num_viaje_electrica = Viaje.objects.filter(barca = tipoElectrica, fecha.strftime("%d/%m/%y") = hoy).count()
-	num_viaje_whaly		= Viaje.objects.filter(barca = tipoWhaly, fecha.strftime("%d/%m/%y") = hoy).count()
-	num_viaje_gold		= Viaje.objects.filter(barca = tipoGold, fecha.strftime("%d/%m/%y") = hoy).count()
+	print 'hoy = ';print hoy
+	num_viaje_rio 		= Viaje.objects.filter(barca = tipoRio).entry__count
+	num_viaje_electrica = Viaje.objects.filter(barca = tipoElectrica).entry__count
+	num_viaje_whaly		= Viaje.objects.filter(barca = tipoWhaly).entry__count
+	num_viaje_gold		= Viaje.objects.filter(barca = tipoGold).entry__count
 
 	data = {'rio' : num_viaje_rio, 'electrica' : num_viaje_electrica, 'whaly' : num_viaje_whaly, 'gold' : num_viaje_gold}
 
