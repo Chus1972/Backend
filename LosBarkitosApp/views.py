@@ -234,12 +234,14 @@ def totalBarcas(request):
 	tipoWhaly		= TipoBarca.objects.get(codigo = 3)
 	tipoGold		= TipoBarca.objects.get(codigo = 4)
 
-	hoy = datetime.now().strftime("%d/%m/%y")
-	print 'hoy = ';print hoy
-	num_viaje_rio 		= Viaje.objects.filter(barca = tipoRio).count()
-	num_viaje_electrica = Viaje.objects.filter(barca = tipoElectrica).count()
-	num_viaje_whaly		= Viaje.objects.filter(barca = tipoWhaly).count()
-	num_viaje_gold		= Viaje.objects.filter(barca = tipoGold).count()
+	dia = datetime.now().strftime("%d")
+	mes = datetime.now().strftime("%m")
+	ano = datetime.now().strftime("%Y")
+
+	num_viaje_rio 		= Viaje.objects.filter(barca = tipoRio, fecha__year = ano, fecha__month = mes, fecha__day = dia).count()
+	num_viaje_electrica = Viaje.objects.filter(barca = tipoElectrica, fecha__year = ano, fecha__month = mes, fecha__day = dia).count()
+	num_viaje_whaly		= Viaje.objects.filter(barca = tipoWhaly, fecha__year = ano, fecha__month = mes, fecha__day = dia).count()
+	num_viaje_gold		= Viaje.objects.filter(barca = tipoGold, fecha__year = ano, fecha__month = mes, fecha__day = dia).count()
 
 	data = {'rio' : num_viaje_rio, 'electrica' : num_viaje_electrica, 'whaly' : num_viaje_whaly, 'gold' : num_viaje_gold}
 
