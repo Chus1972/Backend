@@ -234,7 +234,7 @@ def totalBarcas(request):
 	tipoWhaly		= TipoBarca.objects.get(codigo = 3)
 	tipoGold		= TipoBarca.objects.get(codigo = 4)
 
-	hoy = time.strftime("%d/%m/%y")
+	hoy = datetime.now().strftime("%d/%m/%y")
 	print 'hoy = ';print hoy
 	num_viaje_rio 		= Viaje.objects.filter(barca = tipoRio).count()
 	num_viaje_electrica = Viaje.objects.filter(barca = tipoElectrica).count()
