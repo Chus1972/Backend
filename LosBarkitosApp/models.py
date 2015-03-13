@@ -75,7 +75,7 @@ class Viaje(models.Model):
 		ordering = ['-numero']
 
 	def __unicode__(self):
-		return "Numero: %s".encode('utf8') % (self.numero)
+		return "Numero: %s, fecha: %s".encode('utf8') % (self.numero) % (self.fecha).strftime("%d/%m/%Y")
 
 class Control(models.Model):
 	num_viaje	  		  = models.IntegerField()
