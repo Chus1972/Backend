@@ -252,6 +252,24 @@ def totalBarcas(request):
 	llamada = 'SELECT count(*) FROM LosBarkitosApp_viaje where barca_id=4 and year(fecha)=%s  and month(fecha)=%s and day(fecha)=%s' % (ano, mes, dia)
 	GOLDS = [row[0] for row in cursor.fetchall()]
 
-	data = {'rio' : RIOS, 'electrica' : ELECTRICAS, 'whaly' : WHALYS, 'gold' : GOLDS}
+	try:
+		rios = RIOS[0]
+	except :
+		rios = 0
+	try:
+		electricas = ELECTRICAS[0]
+	except :
+		electricas = 0
+	try:
+		whalys = WHALYS[0]
+	except :
+		whalys = 0
+	try:
+		golds = GOLDS[0]
+	except :
+		golds = 0
+
+
+	data = {'rio' : rios, 'electrica' : electricas, 'whaly' : whalys, 'gold' : golds}
 
 	return HttpResponse(json.dumps(data), 'application/json')
