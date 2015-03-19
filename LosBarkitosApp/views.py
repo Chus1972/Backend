@@ -230,27 +230,33 @@ def resetear(request):
 	return HttpResponse(json.dumps(data), 'application/json')
 
 def totalBarcas(request):
-	#tipoRio 		= TipoBarca.objects.get(codigo = 1)
-	#tipoElectrica	= TipoBarca.objects.get(codigo = 2)
-	#tipoWhaly		= TipoBarca.objects.get(codigo = 3)
-	#tipoGold		= TipoBarca.objects.get(codigo = 4)
 
-	dia = datetime.now().strftime("%d");print dia
-	mes = datetime.now().strftime("%m");print mes
-	ano = datetime.now().strftime("%Y"); print ano
+	dia = datetime.now().strftime("%d")
+	mes = datetime.now().strftime("%m")
+	ano = datetime.now().strftime("%Y")
 
 	db = MySQLdb.connect(user = 'b17e70697e2374', db='heroku_c71c74c67cde020', passwd='3eaf2e91', host='eu-cdbr-west-01.cleardb.com')
 	cursor = db.cursor()
-	llamada = 'SELECT count(*) FROM LosBarkitosApp_viaje where barca_id=1 and year(fecha)=%s  and month(fecha)=%s and day(fecha)=%s' % (ano, mes, dia)
-	cursor.execute(llamada)
-	RIOS = [row[0] for row in cursor.fetchall()]
-	llamada = 'SELECT count(*) FROM LosBarkitosApp_viaje where barca_id=2 and year(fecha)=%s  and month(fecha)=%s and day(fecha)=%s' % (ano, mes, dia)
-	ELECTRICAS = [row[0] for row in cursor.fetchall()]
-	llamada = 'SELECT count(*) FROM LosBarkitosApp_viaje where barca_id=3 and year(fecha)=%s  and month(fecha)=%s and day(fecha)=%s' % (ano, mes, dia)
-	cursor.execute(llamada)
-	WHALYS = [row[0] for row in cursor.fetchall()]
-	llamada = 'SELECT count(*) FROM LosBarkitosApp_viaje where barca_id=4 and year(fecha)=%s  and month(fecha)=%s and day(fecha)=%s' % (ano, mes, dia)
-	GOLDS = [row[0] for row in cursor.fetchall()]
+
+	try:
+		llamada = 'SELECT count(*) FROM LosBarkitosApp_viaje where barca_id=1 and year(fecha)=%s  and month(fecha)=%s and day(fecha)=%s' % (ano, mes, dia)
+		cursor.execute(llamada)
+		RIOS = [row[0] for row in cursor.fetchall()]
+
+		llamada = 'SELECT count(*) FROM LosBarkitosApp_viaje where barca_id=2 and year(fecha)=%s  and month(fecha)=%s and day(fecha)=%s' % (ano, mes, dia)
+		cursor.execute(llamada)
+		ELECTRICAS = [row[0] for row in cursor.fetchall()]
+
+		llamada = 'SELECT count(*) FROM LosBarkitosApp_viaje where barca_id=3 and year(fecha)=%s  and month(fecha)=%s and day(fecha)=%s' % (ano, mes, dia)
+		cursor.execute(llamada)
+		WHALYS = [row[0] for row in cursor.fetchall()]
+
+		llamada = 'SELECT count(*) FROM LosBarkitosApp_viaje where barca_id=4 and year(fecha)=%s  and month(fecha)=%s and day(fecha)=%s' % (ano, mes, dia)
+		cursor.execute(llamada)
+		GOLDS = [row[0] for row in cursor.fetchall()]
+	except :
+		RIOS[0] = -1; ELECTRICAS[0] = -1; WHALYS[0] = -1; GOLDS[0] = -1
+
 
 	try:
 		rios = RIOS[0]
@@ -271,5 +277,26 @@ def totalBarcas(request):
 
 
 	data = {'rio' : rios, 'electrica' : electricas, 'whaly' : whalys, 'gold' : golds}
+
+	return HttpResponse(json.dumps(data), 'application/json')
+
+def totalEuros(request):
+
+	dia = datetime.now().strftime("%d")
+	mes = datetime.now().strftime("%m")
+	ano = datetime.now().strftime("%Y")
+
+	data = {}
+
+	try:
+		db = MySQLdb.connect(user = 'b17e70697e2374', db='heroku_c71c74c67cde020', passwd='3eaf2e91', host='eu-cdbr-west-01.cleardb.com')
+		cursor = db.cursor()
+		llamada = 'SELECT sum(precio) FROM LosBarkitosApp_viaje where  year(fecha)=%s  and month(fecha)=%s and day(fecha)=%s' % (ano, mes, dia)
+		cursor.execute(llamada)
+
+		data["total"] = cursor.fetchone()[0]
+
+	except Exception, e:
+		data["error"] = "Error %s en el servidor (%s) " % (Exception, e)
 
 	return HttpResponse(json.dumps(data), 'application/json')

@@ -33,7 +33,7 @@ STATIC_URL = '/static/'
 SECRET_KEY = '(80r!achazq71v7+3hav8lv4q3le8v#p#mxng4acjfa85l=bwy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
@@ -90,6 +90,7 @@ WSGI_APPLICATION = 'LosBarkitosProyecto.wsgi.application'
     }
 }'''
 DATABASES = {
+
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'heroku_c71c74c67cde020',
